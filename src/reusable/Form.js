@@ -2,47 +2,7 @@ import { Fragment, useState } from "react"
 import CustomInput from "./CustomInput"
 
 
-const initialisationFunction = (fieldObject = {}) => {
-
-
-    const formatTheObject = (fieldObject = {}) => {
-        let storeData = {}
-        Object.keys(fieldObject).forEach(key => {
-            if (fieldObject[key].fields) {
-                storeData[key] = formatTheObject(fieldObject[key].fields)
-            } else {
-                storeData[key] = ""
-            }
-        })
-        return storeData
-    }
-
-
-    const flattenObj = (obj) => {
-        let result = {};
-        for (const i in obj) {
-            if (typeof obj[i] === 'object' && !Array.isArray(obj[i])) {
-                const temp = flattenObj(obj[i]);
-                for (const j in temp) {
-                    result[i + '.' + j] = temp[j];
-                }
-            } else {
-                result[i] = obj[i];
-            }
-        }
-        return result;
-    };
-
-
-    return flattenObj(formatTheObject(fieldObject))
-
-}
-
-
-
-
-
-
+// note : this form customises output based on keys only
 const Form = ({ formFields, onSubmitSuccess }) => {
     let initialFormData = {}
 
@@ -58,10 +18,10 @@ const Form = ({ formFields, onSubmitSuccess }) => {
         let finalArray = []
         Object.keys(fieldObject).forEach(key => {
             if (fieldObject[key].fields) {
-                const namevalue = parent ? `${parent}.${fieldObject[key].name}` : fieldObject[key].name
-                finalArray.push(...createElementArray(fieldObject[key].fields, namevalue, fieldObject[key].name))
+                const namevalue = parent ? `${parent}.${key}` : key
+                finalArray.push(...createElementArray(fieldObject[key].fields, namevalue, key))
             } else {
-                finalArray.push({ ...fieldObject[key], namevalue: `${parent}.${fieldObject[key].name}`, parentname: parentname })
+                finalArray.push({ ...fieldObject[key], namevalue: `${parent}.${key}`, parentname: parentname })
             }
         })
         return finalArray
@@ -74,9 +34,6 @@ const Form = ({ formFields, onSubmitSuccess }) => {
 
 
     const handleInputChange = (e, namevalue) => {
-
-
-
         setFormData({ ...formData, [namevalue]: e.target.value });
     }
     const handleSubmit = (e) => {
@@ -149,3 +106,43 @@ const Form = ({ formFields, onSubmitSuccess }) => {
 }
 
 export default Form
+
+
+
+
+
+const initialisationFunction = (fieldObject = {}) => {
+
+
+    function formatTheObject(fieldObject = {}) {
+        let storeData = {}
+        Object.keys(fieldObject).forEach(key => {
+            if (fieldObject[key].fields) {
+                storeData[key] = formatTheObject(fieldObject[key].fields)
+            } else {
+                storeData[key] = ""
+            }
+        })
+        return storeData
+    }
+
+
+    function flattenObj(obj) {
+        let result = {};
+        for (const i in obj) {
+            if (typeof obj[i] === 'object' && !Array.isArray(obj[i])) {
+                const temp = flattenObj(obj[i]);
+                for (const j in temp) {
+                    result[i + '.' + j] = temp[j];
+                }
+            } else {
+                result[i] = obj[i];
+            }
+        }
+        return result;
+    };
+
+
+    return flattenObj(formatTheObject(fieldObject))
+
+}

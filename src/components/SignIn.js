@@ -78,6 +78,7 @@ const SignIn = () => {
 
     return (
         <>
+    // note : this form customises output based on keys only in object structure
 
             <Form formFields={formFields} onSubmitSuccess={handleSubmit} />
         </>

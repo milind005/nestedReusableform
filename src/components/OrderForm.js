@@ -51,7 +51,7 @@ const OrderForm = () => {
     };
 
 
-
+    // note : this form customises output based on keys only in object structure
 
     const handleSubmit = (finalObject = {}) => {
 
@@ -88,6 +88,7 @@ const OrderForm = () => {
     }
 
 
+    // note : this form customises output based on keys only in object structure
 
     return (
         <div>

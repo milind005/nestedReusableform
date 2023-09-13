@@ -1,11 +1,11 @@
 import { memo } from "react"
 
 const CustomInput = (props) => {
-    const { inputChange, namevalue } = props
+    const { inputChange, namevalue, ...restProps } = props
 
     return (
         <input
-            {...props}
+            {...restProps}
             onChange={(e) => inputChange(e, namevalue)}
         />
     )
