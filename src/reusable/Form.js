@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react"
+import { Fragment, useState, useCallback } from "react"
 import CustomInput from "./CustomInput"
 
 
@@ -33,9 +33,9 @@ const Form = ({ formFields, onSubmitSuccess }) => {
     // console.log("AllFields::::::::::::", initialFormData)
 
 
-    const handleInputChange = (e, namevalue) => {
-        setFormData({ ...formData, [namevalue]: e.target.value });
-    }
+    const handleInputChange = useCallback((e, namevalue) => {
+        setFormData({ ...formData, [namevalue]: e.target.value })
+    }, [])
     const handleSubmit = (e) => {
 
         e.preventDefault()
