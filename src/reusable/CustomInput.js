@@ -1,4 +1,4 @@
-import { Fragment, memo, useState } from "react"
+import { Fragment, memo } from "react"
 
 const CustomInput = (props) => {
 
@@ -6,7 +6,7 @@ const CustomInput = (props) => {
 
     switch (type) {
         case "select":
-            console.log(restProps.options)
+
 
             return (
                 <select
@@ -45,7 +45,6 @@ const CustomInput = (props) => {
             )
         case "checkbox":
 
-            console.log("value", namevalue, value)
             return (
                 <input
                     {...restProps}

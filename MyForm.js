@@ -59,7 +59,7 @@ function MyForm() {
 
 
 
-    console.log(":::::::::::::::::::;", arrayPurify(arr1))
+    // console.log(":::::::::::::::::::;", arrayPurify(arr1))
     // console.log(":::::obj::::::::::::::;", flattenObj({ show: { man: { power: 2, pk: { rr: "fdfd", hyjuhjsdhjfh: "" }, raj: { p: {} } } } }))
 
 

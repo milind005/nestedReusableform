@@ -15,8 +15,6 @@ function FileUploadForm() {
         console.log("::::::::::::::::::::::", fromData)
     };
 
-
-
     return (
         <div>
             <h1>File Upload Form</h1>

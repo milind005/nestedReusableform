@@ -12,11 +12,11 @@ const Form = ({ formFields, onSubmitSuccess }) => {
 
 
     const AllFields = createElementArray(formFields)
-    console.log("AllFields::::::::::::", formData)
+    // console.log("AllFields::::::::::::", formData)
     // console.log("AllFields::::::::::::", initialFormData)
 
     const handleInputChange = useCallback((e, namevalue) => {
-        console.log("value", e.target.value)
+
         const typeOfInput = e.target.type
         if (typeOfInput === "checkbox") {
             setFormData((formData) => ({ ...formData, [namevalue]: e.target.checked }))
@@ -132,9 +132,10 @@ const initialisationFunction = (fieldObject = {}) => {
             if (fieldObject[key].fields) {
                 storeData[key] = formatTheObject(fieldObject[key].fields)
             } else {
-                storeData[key] = ""
+                storeData[key] = fieldObject[key]?.value
                 if (fieldObject[key].type === "checkbox") {
-                    storeData[key] = false
+
+                    storeData[key] = fieldObject[key].ischecked
                 }
 
             }
