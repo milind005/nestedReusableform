@@ -4,9 +4,6 @@ const {
     name, email, age, area, city, pincode, cardNumber, date
 } = fields
 
-const initialState = {
-
-}
 
 
 const OrderForm = () => {
@@ -17,25 +14,25 @@ const OrderForm = () => {
             name: 'personalDetails',
             label: 'Personal Details',
             fields: {
-                name: { name: 'name', label: 'Name', type: 'text', required: true },
-                age: { name: 'age', label: 'Age', type: 'number', required: true },
-                email: { name: 'email', label: 'Email', type: 'email', required: true },
+                name: name,
+                age: age,
+                email: email,
                 currentAddress: {
                     name: 'currentAddress',
                     label: 'Current Address',
                     fields: {
-                        area: { name: 'area', label: 'Area', type: 'text', required: true },
-                        city: { name: 'city', label: 'City', type: 'text', required: true },
-                        pincode: { name: 'pincode', label: 'Pin Code', type: 'text', required: true },
+                        area: area,
+                        city: city,
+                        pincode: pincode,
                     },
                 },
                 permanentAddress: {
                     name: 'permanentAddress',
                     label: 'Permanent Address',
                     fields: {
-                        area: { name: 'area', label: 'Area', type: 'text', required: true },
-                        city: { name: 'city', label: 'City', type: 'text', required: true },
-                        pincode: { name: 'pincode', label: 'Pin Code', type: 'text', required: true },
+                        area: area,
+                        city: city,
+                        pincode: pincode,
                     },
                 },
             },
@@ -44,8 +41,8 @@ const OrderForm = () => {
             name: 'cardDetails',
             label: 'Card Details',
             fields: {
-                cardNumber: { name: 'cardNumber', label: 'Card Number', type: 'text', required: true },
-                date: { name: 'date', label: 'Date', type: 'date', required: true },
+                cardNumber: cardNumber,
+                date: date,
             },
         },
     };

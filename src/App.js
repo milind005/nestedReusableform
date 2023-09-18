@@ -2,7 +2,7 @@ import OrderForm from './components/OrderForm';
 import SignIn from './components/SignIn';
 import './App.css';
 
-import MyForm from './reusable/MyForm';
+
 
 
 // note : this form customises output based on keys only in object structure
@@ -14,8 +14,8 @@ function App() {
       <hr />
       <hr />
       <hr />
-      {/* <SignIn /> */}
-      <MyForm />
+      <SignIn />
+      {/* <MyForm /> */}
     </div>
   );
 }

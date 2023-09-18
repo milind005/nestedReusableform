@@ -1,6 +1,10 @@
 
-
 import Form from "../reusable/Form"
+import fields from "../constants/formFields"
+
+const { name, age, email, area, city, pincode, facebook,
+    twitter,
+    insta } = fields
 
 const SignIn = () => {
 
@@ -11,17 +15,17 @@ const SignIn = () => {
             name: 'person',
             label: 'Personal Details',
             fields: {
-                name: { name: 'name', label: 'Name', type: 'text', required: true },
-                age: { name: 'age', label: 'Age', type: 'number', required: true },
-                email: { name: 'email', label: 'Email', type: 'email', required: true },
+                name: name,
+                age: age,
+                email: email,
 
                 address: {
                     name: 'address',
                     label: 'Address',
                     fields: {
-                        area: { name: 'area', label: 'Area', type: 'text', required: true },
-                        city: { name: 'city', label: 'City', type: 'text', required: true },
-                        pincode: { name: 'pincode', label: 'Pin Code', type: 'text', required: true },
+                        area: area,
+                        city: city,
+                        pincode: pincode,
                     },
                 },
             },
@@ -30,9 +34,9 @@ const SignIn = () => {
             name: 'socialMedia',
             label: 'social Media',
             fields: {
-                facebook: { name: 'facebook', label: 'Facebook', type: 'text', required: true },
-                twitter: { name: 'twitter', label: 'Twitter', type: 'text', required: true },
-                insta: { name: 'insta', label: 'Insta', type: 'text', required: true },
+                facebook: facebook,
+                twitter: twitter,
+                insta: insta,
 
             },
         },

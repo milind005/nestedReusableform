@@ -1,4 +1,5 @@
 export default {
+
     name: {
         name: 'name',
         label: 'Name',
@@ -47,4 +48,7 @@ export default {
         type: 'date',
         required: true
     },
+    facebook: { name: 'facebook', label: 'Facebook', type: 'text', required: true },
+    twitter: { name: 'twitter', label: 'Twitter', type: 'text', required: true },
+    insta: { name: 'insta', label: 'Insta', type: 'text', required: true }
 }

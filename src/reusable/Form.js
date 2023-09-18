@@ -1,4 +1,4 @@
-import { Fragment, useState, useCallback } from "react"
+import { Fragment, useState, useCallback, memo } from "react"
 import CustomInput from "./CustomInput"
 
 
@@ -6,35 +6,17 @@ import CustomInput from "./CustomInput"
 const Form = ({ formFields, onSubmitSuccess }) => {
     let initialFormData = {}
 
-    initialFormData = initialisationFunction({ ...formFields })
+    initialFormData = (initialisationFunction({ ...formFields }))
 
     const [formData, setFormData] = useState(initialFormData)
-
-
-
-
-
-    function createElementArray(fieldObject = [], parent = null, parentname = "") {
-        let finalArray = []
-        Object.keys(fieldObject).forEach(key => {
-            if (fieldObject[key].fields) {
-                const namevalue = parent ? `${parent}.${key}` : key
-                finalArray.push(...createElementArray(fieldObject[key].fields, namevalue, key))
-            } else {
-                finalArray.push({ ...fieldObject[key], namevalue: `${parent}.${key}`, parentname: parentname })
-            }
-        })
-        return finalArray
-    }
 
 
     const AllFields = createElementArray(formFields)
     // console.log("AllFields::::::::::::", AllFields)
     // console.log("AllFields::::::::::::", initialFormData)
 
-
     const handleInputChange = useCallback((e, namevalue) => {
-        setFormData({ ...formData, [namevalue]: e.target.value })
+        setFormData((formData) => ({ ...formData, [namevalue]: e.target.value }))
     }, [])
     const handleSubmit = (e) => {
 
@@ -92,7 +74,9 @@ const Form = ({ formFields, onSubmitSuccess }) => {
 
                             {AllFields[i - 1]?.parentname !== parentname && <h1>{parentname}</h1>}
                             <label htmlFor="">{label}</label>:
-                            <CustomInput {...field} inputChange={handleInputChange} />
+                            <CustomInput {...field}
+                                value={formData[namevalue]}
+                                inputChange={handleInputChange} />
                             <br />
                             <br />
                         </Fragment>
@@ -105,7 +89,23 @@ const Form = ({ formFields, onSubmitSuccess }) => {
     )
 }
 
-export default Form
+export default memo(Form)
+
+
+
+
+function createElementArray(fieldObject = [], parent = null, parentname = "") {
+    let finalArray = []
+    Object.keys(fieldObject).forEach(key => {
+        if (fieldObject[key].fields) {
+            const namevalue = parent ? `${parent}.${key}` : key
+            finalArray.push(...createElementArray(fieldObject[key].fields, namevalue, key))
+        } else {
+            finalArray.push({ ...fieldObject[key], namevalue: `${parent}.${key}`, parentname: parentname })
+        }
+    })
+    return finalArray
+}
 
 
 
