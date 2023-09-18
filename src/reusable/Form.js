@@ -12,10 +12,21 @@ const Form = ({ formFields, onSubmitSuccess }) => {
 
 
     const AllFields = createElementArray(formFields)
-    // console.log("AllFields::::::::::::", AllFields)
+    console.log("AllFields::::::::::::", formData)
     // console.log("AllFields::::::::::::", initialFormData)
 
     const handleInputChange = useCallback((e, namevalue) => {
+        console.log("value", e.target.value)
+        const typeOfInput = e.target.type
+        if (typeOfInput === "checkbox") {
+            setFormData((formData) => ({ ...formData, [namevalue]: e.target.checked }))
+            return
+        }
+        if (typeOfInput === "file") {
+            const file = e.target.files[0];
+            setFormData((formData) => ({ ...formData, [namevalue]: file }))
+            return
+        }
         setFormData((formData) => ({ ...formData, [namevalue]: e.target.value }))
     }, [])
     const handleSubmit = (e) => {
@@ -101,7 +112,8 @@ function createElementArray(fieldObject = [], parent = null, parentname = "") {
             const namevalue = parent ? `${parent}.${key}` : key
             finalArray.push(...createElementArray(fieldObject[key].fields, namevalue, key))
         } else {
-            finalArray.push({ ...fieldObject[key], namevalue: `${parent}.${key}`, parentname: parentname })
+            const namevalue = parent ? `${parent}.${key}` : key
+            finalArray.push({ ...fieldObject[key], namevalue: namevalue, parentname: parentname })
         }
     })
     return finalArray
@@ -121,6 +133,10 @@ const initialisationFunction = (fieldObject = {}) => {
                 storeData[key] = formatTheObject(fieldObject[key].fields)
             } else {
                 storeData[key] = ""
+                if (fieldObject[key].type === "checkbox") {
+                    storeData[key] = false
+                }
+
             }
         })
         return storeData

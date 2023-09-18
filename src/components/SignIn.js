@@ -2,9 +2,14 @@
 import Form from "../reusable/Form"
 import fields from "../constants/formFields"
 
-const { name, age, email, area, city, pincode, facebook,
-    twitter,
-    insta } = fields
+const { name, age, email, area, city, pincode, facebook, twitter, insta, country,
+    gender,
+    category,
+    footbal,
+    kabbadi,
+    kho_kho
+
+} = fields
 
 const SignIn = () => {
 
@@ -15,33 +20,32 @@ const SignIn = () => {
             name: 'person',
             label: 'Personal Details',
             fields: {
-                name: name,
-                age: age,
-                email: email,
-
-                address: {
-                    name: 'address',
-                    label: 'Address',
+                name,
+                age,
+                email,
+                country,
+                gender,
+                category,
+                interests: {
+                    name: 'interests',
+                    label: 'Interests',
                     fields: {
-                        area: area,
-                        city: city,
-                        pincode: pincode,
+                        footbal,
+                        kabbadi,
+                        kho_kho,
+                    },
+                    address: {
+                        name: 'address',
+                        label: 'Address',
+                        fields: {
+                            area,
+                            city,
+                        },
                     },
                 },
             },
-        },
-        socialMedia: {
-            name: 'socialMedia',
-            label: 'social Media',
-            fields: {
-                facebook: facebook,
-                twitter: twitter,
-                insta: insta,
-
-            },
-        },
-    };
-
+        }
+    }
 
 
     const handleSubmit = (finalObject = {}) => {
@@ -82,9 +86,9 @@ const SignIn = () => {
 
     return (
         <>
-    // note : this form customises output based on keys only in object structure
+            {/* // note : this form customises output based on keys only in object structure */}
 
-            <Form formFields={formFields} onSubmitSuccess={handleSubmit} />
+            < Form formFields={formFields} onSubmitSuccess={handleSubmit} />
         </>
     )
 }

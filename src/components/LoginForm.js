@@ -1,52 +1,15 @@
 import fields from "../constants/formFields"
 import Form from "../reusable/Form"
-const {
-    name, email, age, area, city, pincode, cardNumber, date, category
-} = fields
+const { name, email, country } = fields
 
 
 
-const OrderForm = () => {
+const LoginForm = () => {
 
 
     const formStruct = {
-        personalDetails: {
-            name: 'personalDetails',
-            label: 'Personal Details',
-            fields: {
-                name: name,
-                age: age,
-                email: email,
-                currentAddress: {
-                    name: 'currentAddress',
-                    label: 'Current Address',
-                    fields: {
-                        area: area,
-                        city: city,
-                        pincode: pincode,
-                    },
-                },
-                permanentAddress: {
-                    name: 'permanentAddress',
-                    label: 'Permanent Address',
-                    fields: {
-                        area: area,
-                        city: city,
-                        pincode: pincode,
-                        category
-                    },
-                },
-            },
-        },
-        cardDetails: {
-            name: 'cardDetails',
-            label: 'Card Details',
-            fields: {
-                cardNumber: cardNumber,
-                date: date,
-            },
-        },
-    };
+        name, email, country
+    }
 
 
     // note : this form customises output based on keys only in object structure
@@ -81,7 +44,7 @@ const OrderForm = () => {
 
 
         // const outputObject = convertObject(finalObject);
-        console.log("OrderFrom Obj|||||||||||||||||||||", finalObject);
+        console.log("Login Obj|||||||||||||||||||||", finalObject);
 
     }
 
@@ -90,10 +53,11 @@ const OrderForm = () => {
 
     return (
         <div>
-            <h1>Order</h1>
+            <h1>Login</h1>
+
             <Form formFields={formStruct} onSubmitSuccess={handleSubmit} />
         </div>
     )
 }
 
-export default OrderForm
+export default LoginForm
