@@ -4,12 +4,19 @@ export default {
         name: 'name',
         label: 'Name',
         type: 'text',
+        placeholder: "Enter the name",
         required: true
     },
     age: {
         name: 'age',
         label: 'Age',
         type: 'number',
+        required: true
+    },
+    password: {
+        name: 'password',
+        label: 'Password',
+        type: 'password',
         required: true
     },
 
@@ -37,11 +44,18 @@ export default {
         type: 'text',
         required: true
     },
+    about: {
+        name: 'cardNumber',
+        label: 'Card Number',
+        type: 'textArea',
+        required: true
+    },
 
     // input type email 
     email: {
         name: 'email',
         label: 'Email',
+        placeholder: "Enter the email",
         type: 'email',
         required: true
     },

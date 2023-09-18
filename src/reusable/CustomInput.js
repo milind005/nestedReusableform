@@ -56,7 +56,6 @@ const CustomInput = (props) => {
             )
         case "file":
 
-            console.log("value", namevalue, value)
             return (
                 <input
                     {...restProps}
@@ -64,6 +63,17 @@ const CustomInput = (props) => {
                     type={type}
                     checked={value === true}
                     onChange={(e) => { inputChange(e, namevalue) }}
+                />
+            )
+        case "textArea":
+
+
+            return (
+                <textarea
+                    {...restProps}
+                    value={value}
+                    type={type}
+                    onChange={(e) => inputChange(e, namevalue)}
                 />
             )
         default:

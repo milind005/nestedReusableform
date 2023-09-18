@@ -2,19 +2,14 @@ import { useState } from 'react';
 import Form from '../reusable/Form';
 import formFields from '../constants/formFields';
 
-const { resume, profileImage, name, email } = formFields
+const { resume, profileImage, name, email, about } = formFields
 
 console.log({ resume, profileImage })
-const formStruct = { name, email, resume, profileImage }
+const formStruct = { name, email, resume, profileImage, about }
 
 
 function FileUploadForm() {
-    const [selectedFile, setSelectedFile] = useState(null);
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-    };
 
     const handleSubmit = (fromData) => {
         console.log("::::::::::::::::::::::", fromData)
